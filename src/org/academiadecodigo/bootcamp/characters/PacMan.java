@@ -7,7 +7,7 @@ import org.academiadecodigo.bootcamp.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class PacMan extends GameCharacter implements Representable, Destroyable, Movable {
+public class PacMan extends GameCharacter implements Destroyable, Movable {
 
     private static final Color COLOR = Color.YELLOW;
 
@@ -29,21 +29,25 @@ public class PacMan extends GameCharacter implements Representable, Destroyable,
     }
 
     public void moveUp(int dist) {
+        setRow(getRow() - dist);
         int yPos = rectangle.getY() - dist * Grid.CELL_SIZE;
         rectangle.translate(0, yPos - rectangle.getY());
     }
 
     public void moveDown(int dist) {
+        setRow(getRow() + dist);
         int yPos = rectangle.getY() + dist * Grid.CELL_SIZE;
         rectangle.translate(0, yPos - rectangle.getY());
     }
 
     public void moveRight(int dist) {
+        setCol(getCol() + dist);
         int xPos = rectangle.getX() + dist * Grid.CELL_SIZE;
         rectangle.translate(xPos - rectangle.getX(), 0);
     }
 
     public void moveLeft(int dist) {
+        setCol(getCol() - 1);
         int xPos = rectangle.getX() - dist * Grid.CELL_SIZE;
         rectangle.translate(xPos - rectangle.getX(), 0);
     }

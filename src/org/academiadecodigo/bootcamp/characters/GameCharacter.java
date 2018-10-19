@@ -1,13 +1,11 @@
 package org.academiadecodigo.bootcamp.characters;
 
-import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.Representable;
 
 abstract public class GameCharacter implements Representable {
 
     private int row;
     private int col;
-    protected CollisionDetector collisionDetector;
 
     public GameCharacter(int col, int row) {
         this.row = row;
@@ -27,7 +25,11 @@ abstract public class GameCharacter implements Representable {
                 (col == gameCharacter.getCol());
     }
 
-    public void setCollisionDetector(CollisionDetector collisionDetector) {
-        this.collisionDetector = collisionDetector;
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }

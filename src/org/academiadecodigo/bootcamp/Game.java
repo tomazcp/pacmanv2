@@ -51,8 +51,6 @@ public class Game implements KeyboardHandler {
         pacMan = new PacMan(2, 1);
         characters[0] = new RedEnemy(2, 2);
         collisionDetector = new CollisionDetector(characters, pacMan);
-        pacMan.setCollisionDetector(collisionDetector);
-        characters[0].setCollisionDetector(collisionDetector);
     }
 
     public void start() {
@@ -93,22 +91,18 @@ public class Game implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 pacMan.moveUp(1);
-                System.out.println("up");
                 break;
 
             case KeyboardEvent.KEY_DOWN:
                 pacMan.moveDown(1);
-                System.out.println("down");
                 break;
 
             case KeyboardEvent.KEY_LEFT:
                 pacMan.moveLeft(1);
-                System.out.println("left");
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
                 pacMan.moveRight(1);
-                System.out.println("right");
                 break;
 
             default:
