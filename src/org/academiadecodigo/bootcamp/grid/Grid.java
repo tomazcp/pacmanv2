@@ -35,11 +35,11 @@ abstract public class Grid {
         return cols;
     }
 
-    public Unit getUnit() {
-        return null;
+    public Unit getUnit(int col, int row) {
+        return units[col][row];
     }
 
     public Unit[][] getUnits() {
-        return null;
+        return units;
     }
 }

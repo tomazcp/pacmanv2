@@ -9,6 +9,7 @@ public class Wall extends GfxUnit {
     public Wall(int col, int row) {
         super(col, row);
         setColor(COLOR);
+        super.fill();
     }
 
 }

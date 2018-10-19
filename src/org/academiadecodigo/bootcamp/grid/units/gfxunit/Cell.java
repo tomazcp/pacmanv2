@@ -8,7 +8,7 @@ public class Cell extends GfxUnit {
 
     private static final Color COLOR = Color.BLACK;
 
-    public Cell(int col, int row, int size) {
+    public Cell(int col, int row) {
         super(col, row);
         setColor(COLOR);
     }

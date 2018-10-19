@@ -26,4 +26,8 @@ abstract public class GfxUnit extends Unit {
     public void show() {
         rectangle.draw();
     }
+
+    public void fill() {
+        rectangle.fill();
+    }
 }
