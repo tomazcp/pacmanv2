@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp.characters;
+package org.academiadecodigo.bootcamp;
 
-public interface Moveable {
+public interface Movable {
 
     void moveUp(int dist);
 

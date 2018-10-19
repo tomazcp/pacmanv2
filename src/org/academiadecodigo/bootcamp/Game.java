@@ -1,9 +1,12 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.bootcamp.characters.GameCharacter;
 import org.academiadecodigo.bootcamp.characters.PacMan;
+import org.academiadecodigo.bootcamp.characters.enemies.RedEnemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Cell;
+import org.academiadecodigo.bootcamp.grid.units.gfxunit.Dot;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -15,11 +18,14 @@ public class Game implements KeyboardHandler {
     private Unit[][] units;
     private Grid grid;
     private PacMan pacMan;
+    private GameCharacter[] characters;
+    private CollisionDetector collisionDetector;
 
 
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
+        this.characters = new GameCharacter[1];
     }
 
 
@@ -35,10 +41,24 @@ public class Game implements KeyboardHandler {
                 if (levelArr[idx] == '0') {
                     units[col][row] = new Cell(col, row);
                 }
+
+                if (levelArr[idx] == '2') {
+                    units[col][row] = new Dot(col, row);
+                }
                 idx++;
             }
         }
         pacMan = new PacMan(2, 1);
+        characters[0] = new RedEnemy(2, 2);
+        collisionDetector = new CollisionDetector(characters, pacMan);
+        pacMan.setCollisionDetector(collisionDetector);
+        characters[0].setCollisionDetector(collisionDetector);
+    }
+
+    public void start() {
+        while (true) {
+            collisionDetector.check();
+        }
     }
 
     public void init() {

@@ -1,17 +1,19 @@
 package org.academiadecodigo.bootcamp.characters;
 
+import org.academiadecodigo.bootcamp.Movable;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.bootcamp.grid.units.Destroyable;
-import org.academiadecodigo.bootcamp.grid.units.Representable;
+import org.academiadecodigo.bootcamp.Destroyable;
+import org.academiadecodigo.bootcamp.Representable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class PacMan extends Character implements Representable, Destroyable, Moveable {
+public class PacMan extends GameCharacter implements Representable, Destroyable, Movable {
 
     private static final Color COLOR = Color.YELLOW;
 
     private Rectangle rectangle;
     private boolean isDestroyed = false;
+
 
     public PacMan(int col, int row) {
         super(col, row);

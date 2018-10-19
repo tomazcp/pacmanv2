@@ -14,5 +14,6 @@ public class Playground {
         game.loadLevel(levelReader.read("level_01"));
 
         game.init();
+        game.start();
     }
 }
