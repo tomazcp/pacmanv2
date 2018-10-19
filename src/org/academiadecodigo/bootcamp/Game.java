@@ -72,19 +72,23 @@ public class Game implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                pacMan.moveUp(Grid.CELL_SIZE);
+                pacMan.moveUp(1);
+                System.out.println("up");
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                pacMan.moveDown(Grid.CELL_SIZE);
+                pacMan.moveDown(1);
+                System.out.println("down");
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                pacMan.moveLeft(Grid.CELL_SIZE);
+                pacMan.moveLeft(1);
+                System.out.println("left");
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
-                pacMan.moveRight(Grid.CELL_SIZE);
+                pacMan.moveRight(1);
+                System.out.println("right");
                 break;
 
             default:

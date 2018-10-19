@@ -12,5 +12,7 @@ public class Playground {
         Game game = new Game(grid);
         LevelReader levelReader = new LevelReader();
         game.loadLevel(levelReader.read("level_01"));
+
+        game.init();
     }
 }

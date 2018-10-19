@@ -27,19 +27,23 @@ public class PacMan extends Character implements Representable, Destroyable, Mov
     }
 
     public void moveUp(int dist) {
-
+        int yPos = rectangle.getY() - dist * Grid.CELL_SIZE;
+        rectangle.translate(0, yPos - rectangle.getY());
     }
 
     public void moveDown(int dist) {
-
+        int yPos = rectangle.getY() + dist * Grid.CELL_SIZE;
+        rectangle.translate(0, yPos - rectangle.getY());
     }
 
     public void moveRight(int dist) {
-
+        int xPos = rectangle.getX() + dist * Grid.CELL_SIZE;
+        rectangle.translate(xPos - rectangle.getX(), 0);
     }
 
     public void moveLeft(int dist) {
-
+        int xPos = rectangle.getX() - dist * Grid.CELL_SIZE;
+        rectangle.translate(xPos - rectangle.getX(), 0);
     }
 
     public boolean isDestroyed() {
