@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.grid;
 
 import org.academiadecodigo.bootcamp.grid.units.Unit;
-import org.academiadecodigo.bootcamp.grid.units.Wall;
+import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
 
 abstract public class Grid {
 
@@ -21,8 +21,7 @@ abstract public class Grid {
     public void init() {
         for (int col = 0; col < cols; col++) {
             for (int row = 0; row < rows; row++) {
-                units[col][row] = new Wall(col, row, CELL_SIZE);
-                units[col][row].draw();
+                units[col][row] = new Wall(col, row);
             }
         }
     }

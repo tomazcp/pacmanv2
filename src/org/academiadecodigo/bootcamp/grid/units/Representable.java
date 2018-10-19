@@ -8,13 +8,7 @@ public interface Representable {
 
     int getCol();
 
-    void draw();
-
-    void fill();
-
-    int getX();
-
-    int getY();
+    void show();
 
     void setColor(Color color);
 }
