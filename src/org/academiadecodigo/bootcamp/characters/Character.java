@@ -1,6 +1,4 @@
-package org.academiadecodigo.bootcamp.gameobjects;
-
-import org.academiadecodigo.simplegraphics.graphics.Color;
+package org.academiadecodigo.bootcamp.characters;
 
 abstract public class Character {
 

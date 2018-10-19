@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.gameobjects.characters.PacMan;
+import org.academiadecodigo.bootcamp.characters.PacMan;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Cell;

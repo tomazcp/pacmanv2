@@ -1,7 +1,5 @@
-package org.academiadecodigo.bootcamp.gameobjects.characters;
+package org.academiadecodigo.bootcamp.characters;
 
-import org.academiadecodigo.bootcamp.gameobjects.Character;
-import org.academiadecodigo.bootcamp.gameobjects.Moveable;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Destroyable;
 import org.academiadecodigo.bootcamp.grid.units.Representable;
