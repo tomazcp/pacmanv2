@@ -6,12 +6,14 @@ import org.academiadecodigo.bootcamp.mapbuilder.LevelReader;
 
 public class Playground {
 
+    private static final String[] LEVELS = {"level_01"};
+
     public static void main(String[] args) {
         Grid grid = new GfxGrid(21, 21);
 
         Game game = new Game(grid);
         LevelReader levelReader = new LevelReader();
-        game.loadLevel(levelReader.read("level_01"));
+        game.loadLevel(levelReader.read(LEVELS[0]));
 
         game.init();
         game.start();

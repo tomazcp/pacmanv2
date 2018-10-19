@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.characters.GameCharacter;
+import org.academiadecodigo.bootcamp.characters.GridDirection;
 import org.academiadecodigo.bootcamp.characters.PacMan;
 import org.academiadecodigo.bootcamp.characters.enemies.RedEnemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
@@ -12,6 +13,8 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+
+import java.io.IOException;
 
 public class Game implements KeyboardHandler {
 
@@ -54,8 +57,16 @@ public class Game implements KeyboardHandler {
     }
 
     public void start() {
-        while (true) {
-            collisionDetector.check();
+        try {
+            while (!pacMan.isDestroyed()) {
+                Thread.sleep(400);
+                pacMan.move();
+                collisionDetector.check();
+            }
+        } catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            System.out.println("You died");
         }
     }
 
@@ -90,19 +101,19 @@ public class Game implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                pacMan.moveUp(1);
+                pacMan.changeDirection(GridDirection.UP);;
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                pacMan.moveDown(1);
+                pacMan.changeDirection(GridDirection.DOWN);
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                pacMan.moveLeft(1);
+                pacMan.changeDirection(GridDirection.LEFT);
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
-                pacMan.moveRight(1);
+                pacMan.changeDirection(GridDirection.RIGHT);
                 break;
 
             default:

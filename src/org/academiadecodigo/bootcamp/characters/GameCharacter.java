@@ -1,8 +1,10 @@
 package org.academiadecodigo.bootcamp.characters;
 
+import org.academiadecodigo.bootcamp.Movable;
 import org.academiadecodigo.bootcamp.Representable;
+import org.academiadecodigo.bootcamp.grid.Grid;
 
-abstract public class GameCharacter implements Representable {
+abstract public class GameCharacter implements Representable, Movable {
 
     private int row;
     private int col;
@@ -31,5 +33,46 @@ abstract public class GameCharacter implements Representable {
 
     public void setCol(int col) {
         this.col = col;
+    }
+
+    public void moveUp(int dist) {
+        row -= dist;
+    }
+
+    public void moveDown(int dist) {
+        row += dist;
+    }
+
+    public void moveRight(int dist) {
+        col += dist;
+    }
+
+    public void moveLeft(int dist) {
+        col -= 1;
+    }
+
+    public void moveInDirection(GridDirection direction, int distance) {
+        switch (direction) {
+            case UP:
+                moveUp(distance);
+                break;
+
+            case DOWN:
+                moveDown(distance);
+                break;
+
+            case LEFT:
+                moveLeft(distance);
+                break;
+
+            case RIGHT:
+                moveRight(distance);
+                break;
+
+            case STATIC:
+                break;
+        }
+
+
     }
 }
