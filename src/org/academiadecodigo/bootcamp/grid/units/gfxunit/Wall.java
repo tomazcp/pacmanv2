@@ -11,5 +11,4 @@ public class Wall extends GfxUnit {
         setColor(COLOR);
         super.fill();
     }
-
 }

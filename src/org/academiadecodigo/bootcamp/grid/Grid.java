@@ -18,14 +18,6 @@ abstract public class Grid {
         units = new Unit[cols][rows];
     }
 
-    public void init() {
-        for (int col = 0; col < cols; col++) {
-            for (int row = 0; row < rows; row++) {
-                units[col][row] = new Wall(col, row);
-            }
-        }
-    }
-
     /** getters */
     public int getRows() {
         return rows;

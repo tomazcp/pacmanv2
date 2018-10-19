@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.grid.units.gfxunit;
 
-import org.academiadecodigo.bootcamp.grid.sgfxgrid.GfxGrid;
-import org.academiadecodigo.bootcamp.grid.units.gfxunit.GfxUnit;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Cell extends GfxUnit {
