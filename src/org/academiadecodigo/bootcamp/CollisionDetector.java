@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.characters.GameCharacter;
-import org.academiadecodigo.bootcamp.characters.PacMan;
+import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
+import org.academiadecodigo.bootcamp.game.characters.PacMan;
 
 public class CollisionDetector {
 

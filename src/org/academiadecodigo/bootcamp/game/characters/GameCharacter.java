@@ -1,8 +1,8 @@
-package org.academiadecodigo.bootcamp.characters;
+package org.academiadecodigo.bootcamp.game.characters;
 
-import org.academiadecodigo.bootcamp.Movable;
-import org.academiadecodigo.bootcamp.Representable;
-import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.grid.Representable;
+import org.academiadecodigo.bootcamp.game.Movable;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
 
 abstract public class GameCharacter implements Representable, Movable {
 

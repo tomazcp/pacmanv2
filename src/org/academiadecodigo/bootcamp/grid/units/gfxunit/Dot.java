@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.grid.units.gfxunit;
 
-import org.academiadecodigo.bootcamp.Destroyable;
+import org.academiadecodigo.bootcamp.game.Destroyable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Dot extends GfxUnit implements Destroyable {

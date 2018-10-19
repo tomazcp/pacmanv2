@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.grid.units;
 
-import org.academiadecodigo.bootcamp.Representable;
+import org.academiadecodigo.bootcamp.grid.Representable;
 
 abstract public class Unit implements Representable {
 

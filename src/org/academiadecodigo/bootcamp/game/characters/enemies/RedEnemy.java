@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp.characters.enemies;
+package org.academiadecodigo.bootcamp.game.characters.enemies;
 
-import org.academiadecodigo.bootcamp.Destroyable;
+import org.academiadecodigo.bootcamp.game.Destroyable;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;

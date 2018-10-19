@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.characters.GameCharacter;
-import org.academiadecodigo.bootcamp.characters.GridDirection;
-import org.academiadecodigo.bootcamp.characters.PacMan;
-import org.academiadecodigo.bootcamp.characters.enemies.RedEnemy;
+import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
+import org.academiadecodigo.bootcamp.game.characters.PacMan;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
+import org.academiadecodigo.bootcamp.game.characters.enemies.RedEnemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Cell;
@@ -13,8 +13,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import java.io.IOException;
 
 public class Game implements KeyboardHandler {
 

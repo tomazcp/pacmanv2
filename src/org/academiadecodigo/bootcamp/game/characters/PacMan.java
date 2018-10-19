@@ -1,8 +1,8 @@
-package org.academiadecodigo.bootcamp.characters;
+package org.academiadecodigo.bootcamp.game.characters;
 
-import org.academiadecodigo.bootcamp.Movable;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.bootcamp.Destroyable;
+import org.academiadecodigo.bootcamp.game.Destroyable;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
