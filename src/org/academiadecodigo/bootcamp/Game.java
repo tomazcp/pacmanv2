@@ -26,7 +26,7 @@ public class Game implements KeyboardHandler {
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
-        this.characters = new GameCharacter[1];
+        //this.characters = new GameCharacter[1];
     }
 
 
@@ -50,8 +50,9 @@ public class Game implements KeyboardHandler {
             }
         }
         pacMan = new PacMan(2, 1);
-        characters[0] = new RedEnemy(2, 2);
-        collisionDetector = new CollisionDetector(characters, pacMan);
+        //characters[0] = new RedEnemy(2, 2);
+        collisionDetector = new CollisionDetector(pacMan, grid);
+        pacMan.setCollisionDetector(collisionDetector);
     }
 
     public void start() {
@@ -59,7 +60,7 @@ public class Game implements KeyboardHandler {
             while (!pacMan.isDestroyed()) {
                 Thread.sleep(400);
                 pacMan.move();
-                collisionDetector.check();
+                //collisionDetector.check();
             }
         } catch (InterruptedException ex) {
             System.out.println(ex.getMessage());
@@ -99,7 +100,7 @@ public class Game implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                pacMan.changeDirection(GridDirection.UP);;
+                pacMan.changeDirection(GridDirection.UP);
                 break;
 
             case KeyboardEvent.KEY_DOWN:

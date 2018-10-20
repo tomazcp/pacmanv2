@@ -8,6 +8,7 @@ abstract public class GameCharacter implements Representable, Movable {
 
     private int row;
     private int col;
+    private GridDirection currentDirection = GridDirection.STATIC;
 
     public GameCharacter(int col, int row) {
         this.row = row;
@@ -48,7 +49,15 @@ abstract public class GameCharacter implements Representable, Movable {
     }
 
     public void moveLeft(int dist) {
-        col -= 1;
+        col -= dist;
+    }
+
+    public boolean isWall() {
+        return false;
+    }
+
+    public void changeDirection(GridDirection direction) {
+        currentDirection = direction;
     }
 
     public void moveInDirection(GridDirection direction, int distance) {
@@ -72,7 +81,10 @@ abstract public class GameCharacter implements Representable, Movable {
             case STATIC:
                 break;
         }
+    }
 
-
+    /** getters */
+    public GridDirection getCurrentDirection() {
+        return currentDirection;
     }
 }

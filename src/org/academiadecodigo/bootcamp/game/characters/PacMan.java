@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.game.characters;
 
+import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
@@ -13,8 +14,7 @@ public class PacMan extends GameCharacter implements Destroyable {
 
     private Rectangle rectangle;
     private boolean isDestroyed = false;
-    private GridDirection currentDirection = GridDirection.STATIC;
-
+    private CollisionDetector collisionDetector;
 
     public PacMan(int col, int row) {
         super(col, row);
@@ -31,7 +31,11 @@ public class PacMan extends GameCharacter implements Destroyable {
     }
 
     public void move() {
-        super.moveInDirection(currentDirection, SPEED);
+        if (!collisionDetector.isSafe(this)) {
+            return;
+        }
+
+        super.moveInDirection(getCurrentDirection(), SPEED);
 
         int xPos = getCol() * Grid.CELL_SIZE + Grid.PADDING;
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;
@@ -39,8 +43,8 @@ public class PacMan extends GameCharacter implements Destroyable {
         rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
     }
 
-    public void changeDirection(GridDirection direction) {
-        currentDirection = direction;
+    public void setCollisionDetector(CollisionDetector collisionDetector) {
+        this.collisionDetector = collisionDetector;
     }
 
     public boolean isDestroyed() {

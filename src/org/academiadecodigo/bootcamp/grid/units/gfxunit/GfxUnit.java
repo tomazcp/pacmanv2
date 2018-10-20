@@ -18,7 +18,6 @@ abstract public class GfxUnit extends Unit {
         show();
     }
 
-
     public void setColor(Color color) {
         rectangle.setColor(color);
     }
