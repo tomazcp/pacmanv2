@@ -3,7 +3,6 @@ package org.academiadecodigo.bootcamp.game.characters;
 import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
-import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 

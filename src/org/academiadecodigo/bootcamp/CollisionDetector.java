@@ -2,59 +2,62 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
 import org.academiadecodigo.bootcamp.game.characters.PacMan;
+import org.academiadecodigo.bootcamp.game.characters.enemies.Enemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
 
+import static org.academiadecodigo.bootcamp.grid.GridDirection.*;
+
 public class CollisionDetector {
 
-    //private GameCharacter[] enemies;
+    private Enemy[] enemies;
     private Unit[][] units;
-    private PacMan pacMan;
 
-    CollisionDetector(GameCharacter[] enemies, PacMan pacMan, Grid grid) {
+    CollisionDetector(Enemy[] enemies, Grid grid) {
         //this.enemies = enemies;
-        this.pacMan = pacMan;
+        //this.pacMan = pacMan;
+        this.enemies = enemies;
         this.units = grid.getUnits();
     }
 
-    CollisionDetector(PacMan pacMan, Grid grid) {
-        this.pacMan = pacMan;
-        this.units = grid.getUnits();
-    }
-
-//    public void check() {
-//        for (GameCharacter gameCharacter : enemies) {
-//            if (pacMan.equals(gameCharacter)) {
-//                pacMan.die();
-//                System.out.println("Pacman died");
-//            }
-//        }
+//    CollisionDetector(PacMan pacMan, Grid grid) {
+//        this.pacMan = pacMan;
+//        this.units = grid.getUnits();
 //    }
 
-    public boolean isSafe(GameCharacter gameCharacter) {
+    public void check(PacMan pacMan) {
+        for (Enemy enemy : enemies) {
+            if (pacMan.equals(enemy)) {
+                pacMan.die();
+                System.out.println("Pacman died");
+            }
+        }
+    }
+
+    public boolean isSafe(GameCharacter character) {
         boolean isSafeToMove = true;
-        switch (gameCharacter.getCurrentDirection()) {
+        switch (character.getCurrentDirection()) {
             case UP:
-                if (units[gameCharacter.getCol()][gameCharacter.getRow() - 1] instanceof Wall) {
+                if (units[character.getCol()][character.getRow() - 1] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case DOWN:
-                if (units[gameCharacter.getCol()][gameCharacter.getRow() + 1] instanceof Wall) {
+                if (units[character.getCol()][character.getRow() + 1] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case LEFT:
-                if (units[gameCharacter.getCol() - 1][gameCharacter.getRow()] instanceof Wall) {
+                if (units[character.getCol() - 1][character.getRow()] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case RIGHT:
-                if (units[gameCharacter.getCol() + 1][gameCharacter.getRow()] instanceof Wall) {
+                if (units[character.getCol() + 1][character.getRow()] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;

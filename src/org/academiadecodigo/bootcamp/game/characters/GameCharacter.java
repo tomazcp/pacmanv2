@@ -52,10 +52,6 @@ abstract public class GameCharacter implements Representable, Movable {
         col -= dist;
     }
 
-    public boolean isWall() {
-        return false;
-    }
-
     public void changeDirection(GridDirection direction) {
         currentDirection = direction;
     }

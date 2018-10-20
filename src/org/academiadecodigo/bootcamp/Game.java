@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
 import org.academiadecodigo.bootcamp.game.characters.PacMan;
+import org.academiadecodigo.bootcamp.game.characters.enemies.Blinky;
+import org.academiadecodigo.bootcamp.game.characters.enemies.Enemy;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
-import org.academiadecodigo.bootcamp.game.characters.enemies.RedEnemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Cell;
@@ -19,14 +19,13 @@ public class Game implements KeyboardHandler {
     private Unit[][] units;
     private Grid grid;
     private PacMan pacMan;
-    private GameCharacter[] characters;
+    private Enemy[] enemies;
     private CollisionDetector collisionDetector;
 
 
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
-        //this.characters = new GameCharacter[1];
     }
 
 
@@ -50,8 +49,9 @@ public class Game implements KeyboardHandler {
             }
         }
         pacMan = new PacMan(2, 1);
-        //characters[0] = new RedEnemy(2, 2);
-        collisionDetector = new CollisionDetector(pacMan, grid);
+        enemies = new Enemy[1];
+        enemies[0] = new Blinky(2, 2);
+        collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
     }
 
@@ -60,12 +60,18 @@ public class Game implements KeyboardHandler {
             while (!pacMan.isDestroyed()) {
                 Thread.sleep(400);
                 pacMan.move();
-                //collisionDetector.check();
+                moveAllEnemies();
             }
         } catch (InterruptedException ex) {
             System.out.println(ex.getMessage());
         } finally {
             System.out.println("You died");
+        }
+    }
+    public void moveAllEnemies() {
+        for (Enemy enemy : enemies) {
+            enemy.move();
+            collisionDetector.check(pacMan);
         }
     }
 
