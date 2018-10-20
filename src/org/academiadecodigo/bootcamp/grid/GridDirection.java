@@ -32,8 +32,13 @@ public enum GridDirection {
         return oppositeDirection;
     }
 
+    /**
+     * New random direction
+     *
+     * @return
+     */
     public static GridDirection newDirection() {
-        return GridDirection.values()[(int) Math.floor(Math.random() *
-                GridDirection.values().length - 1)];
+        int rand = (int) Math.floor(Math.random() * (GridDirection.values().length - 1));
+        return GridDirection.values()[rand];
     }
 }

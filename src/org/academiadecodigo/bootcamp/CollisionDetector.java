@@ -38,24 +38,32 @@ public class CollisionDetector {
         switch (character.getCurrentDirection()) {
             case UP:
                 if (units[character.getCol()][character.getRow() - 1] instanceof Wall) {
+                    System.out.println(character.getClass() + " -> " + character.getRow());
+                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case DOWN:
                 if (units[character.getCol()][character.getRow() + 1] instanceof Wall) {
+                    System.out.println(character.getClass() + " -> " + character.getRow());
+                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case LEFT:
                 if (units[character.getCol() - 1][character.getRow()] instanceof Wall) {
+                    System.out.println(character.getClass() + " -> " + character.getRow());
+                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case RIGHT:
                 if (units[character.getCol() + 1][character.getRow()] instanceof Wall) {
+                    System.out.println(character.getClass() + " -> " + character.getRow());
+                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;

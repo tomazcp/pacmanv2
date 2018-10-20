@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.game.characters;
 import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -33,7 +34,7 @@ public class PacMan extends GameCharacter implements Destroyable {
         if (!collisionDetector.isSafe(this)) {
             return;
         }
-        super.moveInDirection(getCurrentDirection(), SPEED);
+        moveInDirection(getCurrentDirection(), SPEED);
 
         int xPos = getCol() * Grid.CELL_SIZE + Grid.PADDING;
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;

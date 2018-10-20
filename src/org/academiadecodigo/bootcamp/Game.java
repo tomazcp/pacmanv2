@@ -26,14 +26,14 @@ public class Game implements KeyboardHandler {
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
-        enemies = new Enemy[3];
+        enemies = new Enemy[1];
     }
 
 
     public void loadLevel(String level) {
         char[] levelArr = level.toCharArray();
         int idx = 0;
-        int enemyCounter = 0;
+        //int enemyCounter = 0;
         for (int row = 0; row < grid.getRows(); row++) {
             for (int col = 0; col < grid.getCols(); col++) {
                 if (levelArr[idx] == '1') {
@@ -50,8 +50,8 @@ public class Game implements KeyboardHandler {
 
                 if (levelArr[idx] == 'R') {
                     units[col][row] = new Cell(col, row);
-                    enemies[enemyCounter] = new Blinky(col, row);
-                    enemyCounter++;
+                    //enemies[enemyCounter] = new Blinky(col, row);
+                    //enemyCounter++;
                 }
 
                 if (levelArr[idx] == 'S') {
@@ -64,9 +64,15 @@ public class Game implements KeyboardHandler {
         }
 
         //enemies = new Enemy[1];
-        //enemies[0] = new Blinky(2, 2);
+        //
+        //
+        enemies[0] = new Blinky(5, 3);
         collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
+
+        for (Enemy enemy : enemies) {
+            enemy.setCollisionDetector(collisionDetector);
+        }
     }
 
     public void start() {

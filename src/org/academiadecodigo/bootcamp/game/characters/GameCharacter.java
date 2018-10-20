@@ -15,12 +15,18 @@ abstract public class GameCharacter implements Representable, Movable {
         this.col = col;
     }
 
+    abstract public void move();
+
     public int getRow() {
         return row;
     }
 
     public int getCol() {
         return col;
+    }
+
+    public void changeDirection(GridDirection direction) {
+        currentDirection = direction;
     }
 
     public boolean equals(GameCharacter gameCharacter) {
@@ -50,10 +56,6 @@ abstract public class GameCharacter implements Representable, Movable {
 
     public void moveLeft(int dist) {
         col -= dist;
-    }
-
-    public void changeDirection(GridDirection direction) {
-        currentDirection = direction;
     }
 
     public void moveInDirection(GridDirection direction, int distance) {
