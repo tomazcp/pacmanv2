@@ -8,7 +8,7 @@ abstract public class GameCharacter implements Representable, Movable {
 
     private int row;
     private int col;
-    private GridDirection currentDirection = GridDirection.STATIC;
+    private GridDirection currentDirection = GridDirection.RIGHT;
 
     public GameCharacter(int col, int row) {
         this.row = row;

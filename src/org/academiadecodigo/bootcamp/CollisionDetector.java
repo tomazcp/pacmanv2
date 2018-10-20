@@ -7,8 +7,6 @@ import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
 
-import static org.academiadecodigo.bootcamp.grid.GridDirection.*;
-
 public class CollisionDetector {
 
     private Enemy[] enemies;

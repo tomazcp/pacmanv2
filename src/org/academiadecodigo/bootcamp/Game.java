@@ -68,6 +68,7 @@ public class Game implements KeyboardHandler {
             System.out.println("You died");
         }
     }
+
     public void moveAllEnemies() {
         for (Enemy enemy : enemies) {
             enemy.move();
@@ -106,18 +107,34 @@ public class Game implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
+                if (units[pacMan.getCol()][pacMan.getRow() - 1] instanceof Wall) {
+                    pacMan.changeDirection(pacMan.getCurrentDirection());
+                    break;
+                }
                 pacMan.changeDirection(GridDirection.UP);
                 break;
 
             case KeyboardEvent.KEY_DOWN:
+                if (units[pacMan.getCol()][pacMan.getRow() + 1] instanceof Wall) {
+                    pacMan.changeDirection(pacMan.getCurrentDirection());
+                    break;
+                }
                 pacMan.changeDirection(GridDirection.DOWN);
                 break;
 
             case KeyboardEvent.KEY_LEFT:
+                if (units[pacMan.getCol() - 1][pacMan.getRow()] instanceof Wall) {
+                    pacMan.changeDirection(pacMan.getCurrentDirection());
+                    break;
+                }
                 pacMan.changeDirection(GridDirection.LEFT);
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
+                if (units[pacMan.getCol() + 1][pacMan.getRow()] instanceof Wall) {
+                    pacMan.changeDirection(pacMan.getCurrentDirection());
+                    break;
+                }
                 pacMan.changeDirection(GridDirection.RIGHT);
                 break;
 
