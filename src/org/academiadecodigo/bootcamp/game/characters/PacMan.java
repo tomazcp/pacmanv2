@@ -3,13 +3,12 @@ package org.academiadecodigo.bootcamp.game.characters;
 import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
-import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class PacMan extends GameCharacter implements Destroyable {
 
-    private static final Color COLOR = Color.YELLOW;
+    private static final Color COLOR = Color.MAGENTA;
     public static final int SPEED = 1;
 
     private Rectangle rectangle;

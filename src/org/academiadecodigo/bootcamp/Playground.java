@@ -6,16 +6,20 @@ import org.academiadecodigo.bootcamp.mapbuilder.LevelReader;
 
 public class Playground {
 
-    private static final String[] LEVELS = {"level_01"};
+    private static final String[] LEVELS = {"level_02"};
 
     public static void main(String[] args) {
-        Grid grid = new GfxGrid(21, 21);
+//        Grid grid = new GfxGrid(21, 21);
+//
+//        Game game = new Game(grid);
+//        LevelReader levelReader = new LevelReader();
+//        game.loadLevel(levelReader.read(LEVELS[0]));
+//
+//        game.init();
+//        game.start();
 
-        Game game = new Game(grid);
-        LevelReader levelReader = new LevelReader();
-        game.loadLevel(levelReader.read(LEVELS[0]));
-
-        game.init();
-        game.start();
+        for (int i = 0; i < 100; i++) {
+            System.out.println((int) Math.floor(Math.random() * 4));
+        }
     }
 }

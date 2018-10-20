@@ -26,31 +26,45 @@ public class Game implements KeyboardHandler {
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
+        enemies = new Enemy[3];
     }
 
 
     public void loadLevel(String level) {
         char[] levelArr = level.toCharArray();
         int idx = 0;
+        int enemyCounter = 0;
         for (int row = 0; row < grid.getRows(); row++) {
             for (int col = 0; col < grid.getCols(); col++) {
                 if (levelArr[idx] == '1') {
                     units[col][row] = new Wall(col, row);
                 }
 
-                if (levelArr[idx] == '0') {
+                if (levelArr[idx] == '0' || levelArr[idx] == 'P') {
                     units[col][row] = new Cell(col, row);
                 }
 
-                if (levelArr[idx] == '2') {
+                if (levelArr[idx] == '2' || levelArr[idx] == 'K') {
                     units[col][row] = new Dot(col, row);
                 }
+
+                if (levelArr[idx] == 'R') {
+                    units[col][row] = new Cell(col, row);
+                    enemies[enemyCounter] = new Blinky(col, row);
+                    enemyCounter++;
+                }
+
+                if (levelArr[idx] == 'S') {
+                    units[col][row] = new Cell(col, row);
+                    pacMan = new PacMan(col, row);
+                }
+
                 idx++;
             }
         }
-        pacMan = new PacMan(2, 1);
-        enemies = new Enemy[1];
-        enemies[0] = new Blinky(2, 2);
+
+        //enemies = new Enemy[1];
+        //enemies[0] = new Blinky(2, 2);
         collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
     }
