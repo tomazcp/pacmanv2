@@ -29,30 +29,35 @@ public class Blinky extends Enemy implements Destroyable {
     }
 
     public void move() {
-        GridDirection direction = GridDirection.newDirection();
-        changeDirection(direction);
+//        GridDirection direction = getCurrentDirection();
+//
+//        if (!getCollisionDetector().isSafe(this)) {
+//            direction = GridDirection.newDirection();
+//        }
 
-        if (!getCollisionDetector().isSafe(this)) {
-            return;
-        }
-
-        moveInDirection(direction, SPEED);
+        moveInDirection(chooseDirection(), SPEED);
 
         int xPos = getCol() * Grid.CELL_SIZE + Grid.PADDING;
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;
 
         rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
+
+        //if (!getCollisionDetector().isSafe(this)) {
+        //return;
+        //}
+
+        //moveInDirection(direction, SPEED);
     }
 
-    public GridDirection chooseDirection() {
-        GridDirection newDirection = getCurrentDirection();
-        if (Math.random() > ((double) 8) / 10) {
-            newDirection = GridDirection.newDirection();
-            if (newDirection.equals(getCurrentDirection())) {
+    private GridDirection chooseDirection() {
+        GridDirection direction = getCurrentDirection();
+        if (!getCollisionDetector().isSafe(this)) {
+            direction = GridDirection.newDirection();
+            if (direction.equals(getCurrentDirection()) || direction.equals(GridDirection.STATIC)) {
                 return chooseDirection();
             }
         }
-        return newDirection;
+        return direction;
     }
 
     public void setColor(Color color) {
