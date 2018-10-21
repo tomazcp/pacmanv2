@@ -8,7 +8,7 @@ public enum GridDirection {
     /**
      * Calculates the opposite direction
      *
-     * @return
+     * @return the opposite direction
      */
     public GridDirection getNewDirection() {
         GridDirection oppositeDirection = null;

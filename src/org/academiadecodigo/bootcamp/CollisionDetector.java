@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
 import org.academiadecodigo.bootcamp.game.characters.PacMan;
 import org.academiadecodigo.bootcamp.game.characters.enemies.Enemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
@@ -16,16 +15,9 @@ public class CollisionDetector {
     private Unit[][] units;
 
     CollisionDetector(Enemy[] enemies, Grid grid) {
-        //this.enemies = enemies;
-        //this.pacMan = pacMan;
         this.enemies = enemies;
         this.units = grid.getUnits();
     }
-
-//    CollisionDetector(PacMan pacMan, Grid grid) {
-//        this.pacMan = pacMan;
-//        this.units = grid.getUnits();
-//    }
 
     public void checkForEnemy(PacMan pacMan) {
         for (Enemy enemy : enemies) {
@@ -65,9 +57,12 @@ public class CollisionDetector {
                 break;
 
             case RIGHT:
-                if (units[col + 1][row]instanceof Wall) {
+                if (units[col + 1][row] instanceof Wall) {
                     isSafeToMove = false;
                 }
+                break;
+
+            default:
                 break;
         }
         return isSafeToMove;

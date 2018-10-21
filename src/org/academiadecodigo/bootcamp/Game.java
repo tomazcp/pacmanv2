@@ -33,7 +33,6 @@ public class Game implements KeyboardHandler {
     public void loadLevel(String level) {
         char[] levelArr = level.toCharArray();
         int idx = 0;
-        //int enemyCounter = 0;
         for (int row = 0; row < grid.getRows(); row++) {
             for (int col = 0; col < grid.getCols(); col++) {
                 if (levelArr[idx] == '1') {
@@ -50,8 +49,6 @@ public class Game implements KeyboardHandler {
 
                 if (levelArr[idx] == 'R') {
                     units[col][row] = new Cell(col, row);
-                    //enemies[enemyCounter] = new Blinky(col, row);
-                    //enemyCounter++;
                 }
 
                 if (levelArr[idx] == 'S') {
@@ -63,9 +60,6 @@ public class Game implements KeyboardHandler {
             }
         }
 
-        //enemies = new Enemy[1];
-        //
-        //
         enemies[0] = new Blinky(5, 3);
         collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
@@ -129,33 +123,33 @@ public class Game implements KeyboardHandler {
             case KeyboardEvent.KEY_UP:
                 if (units[pacMan.getCol()][pacMan.getRow() - 1] instanceof Wall) {
                     pacMan.changeDirection(pacMan.getCurrentDirection());
-                    break;
+                } else {
+                    pacMan.changeDirection(GridDirection.UP);
                 }
-                pacMan.changeDirection(GridDirection.UP);
                 break;
 
             case KeyboardEvent.KEY_DOWN:
                 if (units[pacMan.getCol()][pacMan.getRow() + 1] instanceof Wall) {
                     pacMan.changeDirection(pacMan.getCurrentDirection());
-                    break;
+                } else {
+                    pacMan.changeDirection(GridDirection.DOWN);
                 }
-                pacMan.changeDirection(GridDirection.DOWN);
                 break;
 
             case KeyboardEvent.KEY_LEFT:
                 if (units[pacMan.getCol() - 1][pacMan.getRow()] instanceof Wall) {
                     pacMan.changeDirection(pacMan.getCurrentDirection());
-                    break;
+                } else {
+                    pacMan.changeDirection(GridDirection.LEFT);
                 }
-                pacMan.changeDirection(GridDirection.LEFT);
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
                 if (units[pacMan.getCol() + 1][pacMan.getRow()] instanceof Wall) {
                     pacMan.changeDirection(pacMan.getCurrentDirection());
-                    break;
+                } else {
+                    pacMan.changeDirection(GridDirection.RIGHT);
                 }
-                pacMan.changeDirection(GridDirection.RIGHT);
                 break;
 
             default:
