@@ -83,7 +83,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
-    public void moveAllEnemies() {
+    private void moveAllEnemies() {
         for (Enemy enemy : enemies) {
             enemy.move();
             collisionDetector.checkForEnemy(pacMan);
