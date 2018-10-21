@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.game.characters.GameCharacter;
 import org.academiadecodigo.bootcamp.game.characters.PacMan;
 import org.academiadecodigo.bootcamp.game.characters.enemies.Enemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Dot;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
@@ -42,29 +43,29 @@ public class CollisionDetector {
         }
     }
 
-    public boolean isSafe(GameCharacter character) {
+    public boolean isSafe(GridDirection direction, int col, int row) {
         boolean isSafeToMove = true;
-        switch (character.getCurrentDirection()) {
+        switch (direction) {
             case UP:
-                if (units[character.getCol()][character.getRow() - 1] instanceof Wall) {
+                if (units[col][row - 1] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case DOWN:
-                if (units[character.getCol()][character.getRow() + 1] instanceof Wall) {
+                if (units[col][row + 1] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case LEFT:
-                if (units[character.getCol() - 1][character.getRow()] instanceof Wall) {
+                if (units[col - 1][row] instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;
 
             case RIGHT:
-                if (units[character.getCol() + 1][character.getRow()] instanceof Wall) {
+                if (units[col + 1][row]instanceof Wall) {
                     isSafeToMove = false;
                 }
                 break;

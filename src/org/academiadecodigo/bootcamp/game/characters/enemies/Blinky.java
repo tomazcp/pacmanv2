@@ -19,7 +19,7 @@ public class Blinky extends Enemy implements Destroyable {
         rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING,
                 row * Grid.CELL_SIZE + Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
         rectangle.setColor(COLOR);
-        changeDirection(GridDirection.RIGHT);
+        changeDirection(GridDirection.newDirection());
         show();
     }
 
@@ -29,31 +29,21 @@ public class Blinky extends Enemy implements Destroyable {
     }
 
     public void move() {
-//        GridDirection direction = getCurrentDirection();
-//
-//        if (!getCollisionDetector().isSafe(this)) {
-//            direction = GridDirection.newDirection();
-//        }
-
-        moveInDirection(chooseDirection(), SPEED);
+        changeDirection(chooseDirection());
+        moveInDirection(getCurrentDirection(), SPEED);
 
         int xPos = getCol() * Grid.CELL_SIZE + Grid.PADDING;
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;
 
         rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
-
-        //if (!getCollisionDetector().isSafe(this)) {
-        //return;
-        //}
-
-        //moveInDirection(direction, SPEED);
     }
 
     private GridDirection chooseDirection() {
         GridDirection direction = getCurrentDirection();
-        if (!getCollisionDetector().isSafe(this)) {
+        if (!getCollisionDetector().isSafe(direction, getCol(), getRow())) {
             direction = GridDirection.newDirection();
-            if (direction.equals(getCurrentDirection()) || direction.equals(GridDirection.STATIC)) {
+            if (direction.equals(getCurrentDirection()) ||
+                    !getCollisionDetector().isSafe(direction, getCol(), getRow())) {
                 return chooseDirection();
             }
         }

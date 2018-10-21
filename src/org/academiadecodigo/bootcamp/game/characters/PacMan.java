@@ -31,7 +31,7 @@ public class PacMan extends GameCharacter implements Destroyable {
     }
 
     public void move() {
-        if (!collisionDetector.isSafe(this)) {
+        if (!collisionDetector.isSafe(getCurrentDirection(), getCol(), getRow())) {
             return;
         }
         moveInDirection(getCurrentDirection(), SPEED);
