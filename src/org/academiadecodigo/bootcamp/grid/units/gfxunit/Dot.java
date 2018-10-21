@@ -11,6 +11,7 @@ public class Dot extends GfxUnit implements Destroyable {
     public Dot(int col, int row) {
         super(col, row);
         setColor(COLOR);
+        fill();
     }
 
     public boolean isDestroyed() {

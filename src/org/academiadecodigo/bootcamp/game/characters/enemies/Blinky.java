@@ -16,8 +16,8 @@ public class Blinky extends Enemy implements Destroyable {
 
     public Blinky(int col, int row) {
         super(col, row);
-        rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING,
-                Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING,
+                row * Grid.CELL_SIZE + Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
         rectangle.setColor(COLOR);
         changeDirection(GridDirection.RIGHT);
         show();

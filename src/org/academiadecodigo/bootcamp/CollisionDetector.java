@@ -5,7 +5,9 @@ import org.academiadecodigo.bootcamp.game.characters.PacMan;
 import org.academiadecodigo.bootcamp.game.characters.enemies.Enemy;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.units.Unit;
+import org.academiadecodigo.bootcamp.grid.units.gfxunit.Dot;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class CollisionDetector {
 
@@ -24,7 +26,7 @@ public class CollisionDetector {
 //        this.units = grid.getUnits();
 //    }
 
-    public void check(PacMan pacMan) {
+    public void checkForEnemy(PacMan pacMan) {
         for (Enemy enemy : enemies) {
             if (pacMan.equals(enemy)) {
                 pacMan.die();
@@ -33,37 +35,36 @@ public class CollisionDetector {
         }
     }
 
+    public void checkForPoint(PacMan pacMan) {
+        if (units[pacMan.getCol()][pacMan.getRow()] instanceof Dot) {
+            units[pacMan.getCol()][pacMan.getRow()].show();
+            units[pacMan.getCol()][pacMan.getRow()].setColor(Color.BLACK);
+        }
+    }
+
     public boolean isSafe(GameCharacter character) {
         boolean isSafeToMove = true;
         switch (character.getCurrentDirection()) {
             case UP:
                 if (units[character.getCol()][character.getRow() - 1] instanceof Wall) {
-                    System.out.println(character.getClass() + " -> " + character.getRow());
-                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case DOWN:
                 if (units[character.getCol()][character.getRow() + 1] instanceof Wall) {
-                    System.out.println(character.getClass() + " -> " + character.getRow());
-                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case LEFT:
                 if (units[character.getCol() - 1][character.getRow()] instanceof Wall) {
-                    System.out.println(character.getClass() + " -> " + character.getRow());
-                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
 
             case RIGHT:
                 if (units[character.getCol() + 1][character.getRow()] instanceof Wall) {
-                    System.out.println(character.getClass() + " -> " + character.getRow());
-                    System.out.println(character.getClass() + " -> " + character.getCol());
                     isSafeToMove = false;
                 }
                 break;
