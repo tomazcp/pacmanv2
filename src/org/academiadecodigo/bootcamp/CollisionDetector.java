@@ -30,7 +30,7 @@ public class CollisionDetector {
 
     public void checkForPoint(PacMan pacMan) {
         if (units[pacMan.getCol()][pacMan.getRow()] instanceof Dot) {
-            units[pacMan.getCol()][pacMan.getRow()].show();
+            ((Dot) units[pacMan.getCol()][pacMan.getRow()]).die();
             units[pacMan.getCol()][pacMan.getRow()].setColor(Color.BLACK);
         }
     }

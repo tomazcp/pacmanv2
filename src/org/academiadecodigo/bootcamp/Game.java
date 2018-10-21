@@ -9,6 +9,7 @@ import org.academiadecodigo.bootcamp.grid.units.Unit;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Cell;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Dot;
 import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
+import org.academiadecodigo.bootcamp.levelreader.LevelReader;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -16,23 +17,28 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
 
+    private static final String[] LEVELS = {"level_02"};
+
     private Unit[][] units;
     private Grid grid;
     private PacMan pacMan;
     private Enemy[] enemies;
     private CollisionDetector collisionDetector;
+    private int delay;
 
 
     public Game(Grid grid) {
         this.grid = grid;
         units = grid.getUnits();
-        enemies = new Enemy[1];
+        enemies = new Enemy[4];
+        delay = 300;
     }
 
 
     public void loadLevel(String level) {
         char[] levelArr = level.toCharArray();
         int idx = 0;
+        int enemyCounter = 0;
         for (int row = 0; row < grid.getRows(); row++) {
             for (int col = 0; col < grid.getCols(); col++) {
                 if (levelArr[idx] == '1') {
@@ -48,7 +54,9 @@ public class Game implements KeyboardHandler {
                 }
 
                 if (levelArr[idx] == 'R') {
-                    units[col][row] = new Cell(col, row);
+                    enemies[enemyCounter] = new Blinky(col, row);
+                    units[col][row] = new Dot(col, row);
+                    enemyCounter++;
                 }
 
                 if (levelArr[idx] == 'S') {
@@ -60,10 +68,9 @@ public class Game implements KeyboardHandler {
             }
         }
 
-        enemies[0] = new Blinky(5, 3);
         collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
-
+        //enemies[0] = new Blinky(2, 3);
         for (Enemy enemy : enemies) {
             enemy.setCollisionDetector(collisionDetector);
         }
@@ -72,7 +79,7 @@ public class Game implements KeyboardHandler {
     public void start() {
         try {
             while (!pacMan.isDestroyed()) {
-                Thread.sleep(400);
+                Thread.sleep(delay);
                 pacMan.move();
                 moveAllEnemies();
             }
@@ -91,6 +98,50 @@ public class Game implements KeyboardHandler {
     }
 
     public void init() {
+        keyboardInit();
+        LevelReader levelReader = new LevelReader();
+        loadLevel(levelReader.read(LEVELS[0]));
+    }
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+        switch (keyboardEvent.getKey()) {
+            case KeyboardEvent.KEY_UP:
+                if (!(units[pacMan.getCol()][pacMan.getRow() - 1] instanceof Wall)) {
+                    pacMan.changeDirection(GridDirection.UP);
+                }
+                break;
+
+            case KeyboardEvent.KEY_DOWN:
+                if (!(units[pacMan.getCol()][pacMan.getRow() + 1] instanceof Wall)) {
+                    pacMan.changeDirection(GridDirection.DOWN);
+                }
+                break;
+
+            case KeyboardEvent.KEY_LEFT:
+                if (!(units[pacMan.getCol() - 1][pacMan.getRow()] instanceof Wall)) {
+                    pacMan.changeDirection(GridDirection.LEFT);
+                }
+                break;
+
+            case KeyboardEvent.KEY_RIGHT:
+                if (!(units[pacMan.getCol() + 1][pacMan.getRow()] instanceof Wall)) {
+                    pacMan.changeDirection(GridDirection.RIGHT);
+                }
+                break;
+
+            default:
+                System.out.println("wtf are you even pressing?");
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
+
+    public void keyboardInit() {
         Keyboard keyboard = new Keyboard(this);
 
         KeyboardEvent left = new KeyboardEvent();
@@ -115,51 +166,5 @@ public class Game implements KeyboardHandler {
         down.setKey(KeyboardEvent.KEY_DOWN);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(down);
-    }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        switch (keyboardEvent.getKey()) {
-            case KeyboardEvent.KEY_UP:
-                if (units[pacMan.getCol()][pacMan.getRow() - 1] instanceof Wall) {
-                    pacMan.changeDirection(pacMan.getCurrentDirection());
-                } else {
-                    pacMan.changeDirection(GridDirection.UP);
-                }
-                break;
-
-            case KeyboardEvent.KEY_DOWN:
-                if (units[pacMan.getCol()][pacMan.getRow() + 1] instanceof Wall) {
-                    pacMan.changeDirection(pacMan.getCurrentDirection());
-                } else {
-                    pacMan.changeDirection(GridDirection.DOWN);
-                }
-                break;
-
-            case KeyboardEvent.KEY_LEFT:
-                if (units[pacMan.getCol() - 1][pacMan.getRow()] instanceof Wall) {
-                    pacMan.changeDirection(pacMan.getCurrentDirection());
-                } else {
-                    pacMan.changeDirection(GridDirection.LEFT);
-                }
-                break;
-
-            case KeyboardEvent.KEY_RIGHT:
-                if (units[pacMan.getCol() + 1][pacMan.getRow()] instanceof Wall) {
-                    pacMan.changeDirection(pacMan.getCurrentDirection());
-                } else {
-                    pacMan.changeDirection(GridDirection.RIGHT);
-                }
-                break;
-
-            default:
-                System.out.println("wtf are you even pressing?");
-                break;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
     }
 }

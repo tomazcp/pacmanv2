@@ -5,28 +5,34 @@ import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class PacMan extends GameCharacter implements Destroyable {
+
+    private static final String IMAGE = "resources/2pacman.png";
 
     private static final Color COLOR = Color.MAGENTA;
     public static final int SPEED = 1;
 
-    private Rectangle rectangle;
+    //private Rectangle rectangle;
+    private Picture image;
     private boolean isDestroyed = false;
     private CollisionDetector collisionDetector;
 
     public PacMan(int col, int row) {
         super(col, row);
-        rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING, +
-                Grid.CELL_SIZE, Grid.CELL_SIZE);
-        rectangle.setColor(COLOR);
-
+//        rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING, +
+//                Grid.CELL_SIZE, Grid.CELL_SIZE);
+//        rectangle.setColor(COLOR);
+        image = new Picture(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING,
+                IMAGE);
         show();
     }
 
     public void show() {
-        rectangle.draw();
-        rectangle.fill();
+        //rectangle.draw();
+        //rectangle.fill();
+        image.draw();
     }
 
     public void move() {
@@ -38,7 +44,8 @@ public class PacMan extends GameCharacter implements Destroyable {
         int xPos = getCol() * Grid.CELL_SIZE + Grid.PADDING;
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;
 
-        rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
+        image.translate(xPos - image.getX(), yPos - image.getY());
+        //rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
     }
 
 //    @Override
@@ -59,6 +66,6 @@ public class PacMan extends GameCharacter implements Destroyable {
     }
 
     public void setColor(Color color) {
-        rectangle.setColor(color);
+        //rectangle.setColor(color);
     }
 }

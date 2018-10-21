@@ -6,7 +6,7 @@ import org.academiadecodigo.bootcamp.grid.units.gfxunit.Wall;
 abstract public class Grid {
 
     public static final int PADDING = 10;
-    public static final int CELL_SIZE = 20;
+    public static final int CELL_SIZE = 25;
 
     private int rows;
     private int cols;

@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.mapbuilder;
+package org.academiadecodigo.bootcamp.levelreader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
