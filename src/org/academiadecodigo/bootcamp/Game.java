@@ -41,11 +41,11 @@ public class Game implements KeyboardHandler {
         int enemyCounter = 0;
         for (int row = 0; row < grid.getRows(); row++) {
             for (int col = 0; col < grid.getCols(); col++) {
-                if (levelArr[idx] == '1') {
+                if (levelArr[idx] == '1' || levelArr[idx] == 'P') {
                     units[col][row] = new Wall(col, row);
                 }
 
-                if (levelArr[idx] == '0' || levelArr[idx] == 'P') {
+                if (levelArr[idx] == '0') {
                     units[col][row] = new Cell(col, row);
                 }
 
