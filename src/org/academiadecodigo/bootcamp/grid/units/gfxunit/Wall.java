@@ -15,8 +15,6 @@ public class Wall extends Unit {
 
     public Wall(int col, int row) {
         super(col, row);
-        //rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING,
-                //Grid.CELL_SIZE, Grid.CELL_SIZE);
         image = new Picture(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING,
                 IMAGE_FILE);
         setColor(COLOR);
@@ -25,15 +23,12 @@ public class Wall extends Unit {
     }
 
     public void show() {
-        //rectangle.draw();
         image.draw();
     }
 
     public void fill() {
-        //rectangle.fill();
     }
 
     public void setColor(Color color) {
-        //rectangle.setColor(color);
     }
 }

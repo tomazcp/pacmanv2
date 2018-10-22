@@ -70,7 +70,6 @@ public class Game implements KeyboardHandler {
 
         collisionDetector = new CollisionDetector(enemies, grid);
         pacMan.setCollisionDetector(collisionDetector);
-        //enemies[0] = new Blinky(2, 3);
         for (Enemy enemy : enemies) {
             enemy.setCollisionDetector(collisionDetector);
         }

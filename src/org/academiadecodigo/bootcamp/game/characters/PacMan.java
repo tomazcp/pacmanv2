@@ -4,7 +4,6 @@ import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.game.Destroyable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class PacMan extends GameCharacter implements Destroyable {
@@ -14,24 +13,18 @@ public class PacMan extends GameCharacter implements Destroyable {
     private static final Color COLOR = Color.MAGENTA;
     public static final int SPEED = 1;
 
-    //private Rectangle rectangle;
     private Picture image;
     private boolean isDestroyed = false;
     private CollisionDetector collisionDetector;
 
     public PacMan(int col, int row) {
         super(col, row);
-//        rectangle = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING, +
-//                Grid.CELL_SIZE, Grid.CELL_SIZE);
-//        rectangle.setColor(COLOR);
         image = new Picture(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING,
                 IMAGE);
         show();
     }
 
     public void show() {
-        //rectangle.draw();
-        //rectangle.fill();
         image.draw();
     }
 
@@ -45,13 +38,7 @@ public class PacMan extends GameCharacter implements Destroyable {
         int yPos = getRow() * Grid.CELL_SIZE + Grid.PADDING;
 
         image.translate(xPos - image.getX(), yPos - image.getY());
-        //rectangle.translate(xPos - rectangle.getX(), yPos - rectangle.getY());
     }
-
-//    @Override
-//    public void changeDirection(GridDirection direction) {
-//        super.changeDirection(direction);
-//    }
 
     public void setCollisionDetector(CollisionDetector collisionDetector) {
         this.collisionDetector = collisionDetector;
@@ -66,6 +53,5 @@ public class PacMan extends GameCharacter implements Destroyable {
     }
 
     public void setColor(Color color) {
-        //rectangle.setColor(color);
     }
 }
