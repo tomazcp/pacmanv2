@@ -31,7 +31,7 @@ public class Game implements KeyboardHandler {
         this.grid = grid;
         units = grid.getUnits();
         enemies = new Enemy[4];
-        delay = 300;
+        delay = 200;
     }
 
 
@@ -140,7 +140,7 @@ public class Game implements KeyboardHandler {
 
     }
 
-    public void keyboardInit() {
+    private void keyboardInit() {
         Keyboard keyboard = new Keyboard(this);
 
         KeyboardEvent left = new KeyboardEvent();
